@@ -25,6 +25,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -57,4 +62,9 @@ dependencies {
     implementation("androidx.camera:camera-view:$cameraxVersion")
     // CameraX 라이프사이클
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

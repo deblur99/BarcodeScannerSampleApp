@@ -57,14 +57,14 @@ public class QRAndBarcodeAnalyzer implements ImageAnalysis.Analyzer {
                             imageProxy.close();
                             return;
                         }
-                        Barcode lastBarcode = barcodes.get(barcodes.size() - 1);
 
+                        Barcode lastBarcode = barcodes.get(barcodes.size() - 1);
                         // 안드로이드의 Context 객체는 액티비티 객체로 타입캐스팅이 가능함
                         if (lastBarcode != null && currentContext instanceof MainActivity) {
                             ((MainActivity) currentContext).runOnUiThread(() -> {
                                 // 맨 마지막으로 인식한 바코드의 raw string을 텍스트뷰에 적용
-                                TextView textView = ((MainActivity) currentContext).findViewById(R.id.scanned_barcode_id_text_view);
-                                textView.setText(lastBarcode.getRawValue());
+                                TextView barcodeTextView = ((MainActivity) currentContext).findViewById(R.id.scanned_barcode_id_text_view);
+                                barcodeTextView.setText(lastBarcode.getRawValue());
                             });
                         }
 
